@@ -46,6 +46,13 @@ fn main() {
 
             if should_replace == true {
                 let replace_to_g1 = line.replace("G2", "G1").replace("G3", "G1");
+                let (replace_to_g1, f_num) = replace_to_g1.split_once("F").unwrap();
+                let (replace_to_g1, _) = replace_to_g1.split_once("I").unwrap();
+
+                let mut replace_to_g1 = replace_to_g1.to_string();
+                replace_to_g1.push_str("F");
+                replace_to_g1.push_str(f_num);
+
                 println!("{}", replace_to_g1);
             } else {
                 println!("{}", line); // I, J is under float32
